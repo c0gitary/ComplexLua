@@ -5,21 +5,24 @@
 --Ex:   local complex_num = Complex.new(1,2)
 
 
-local m_sin   =  math.sin
-local m_cos   =  math.cos
-local m_sqrt  =  math.sqrt
-local m_atan2 =  math.atan2
-local m_log   =  math.log
+-- Math func
+local sin   =  math.sin
+local cos   =  math.cos
+local sqrt  =  math.sqrt
+local atan2 =  math.atan2
+local log   =  math.log
+local exp   =  math.exp
 
 
-local c_e        =  2.71828182845904523536028747135
-local c_pi       =  3.14159265358979323846264338328
-local c_half_pi  =  1.5707963267948966192
-local c_two_pi   =  6.2831853071795864769 -- 2*Pi
-local c_radian   =  57.2957795130823208767981548141 -- 1 rad == 53 deg
-local c_sqrt_two =  1.41421356237309504880168872421 -- sqrt(2)
-local c_phi      =  1.61803398874989484820458683437
-local c_log2     =  0.69314718055994530942
+-- Constants
+local C_E        =  2.71828182845904523536028747135
+local C_PI       =  3.14159265358979323846264338328
+local C_HALF_PI  =  1.5707963267948966192
+local C_TWO_PI   =  6.2831853071795864769 -- 2*Pi
+local C_RAD      =  57.2957795130823208767981548141 -- 1 rad == 53 deg
+local C_SQRT_TWO =  1.41421356237309504880168872421 -- sqrt(2)
+local C_PHI      =  1.61803398874989484820458683437
+local C_LOG2     =  0.69314718055994530942
 
 
 local Complex = {}
@@ -93,6 +96,17 @@ end
  
 function Complex:conjugate() -- сопряженное число (a) -> a:conjugate()
     return Complex.new(self.real, -self.imag)
+end
+
+
+function Complex:arg()
+    return atan2(self.real, self.imag)
+end
+
+
+function Complex:exp()
+    local _r = exp(self.real)
+    return Complex.new(_r * cos(self.imag), _r * sin(self.imag))
 end
 
 

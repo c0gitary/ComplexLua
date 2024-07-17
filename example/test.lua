@@ -1,6 +1,6 @@
-local c = require("src.complex")
+local complex = require("src.complex")
 
-local z = c.new(1,2)
-local z2 = c.new(1,3)
+local z = complex.new(1,1)
+local z2 = complex.new(2,2)
 
-print(z:abs())
+print(z2^3)
